@@ -3,7 +3,6 @@ import {inject, Injectable} from '@angular/core';
 import {Credentials, UserDto} from "../../../types";
 import {Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "@angular/fire/auth";
 import firebase from "firebase/compat";
-import UserCredential = firebase.auth.UserCredential;
 
 
 @Injectable({

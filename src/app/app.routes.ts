@@ -14,6 +14,10 @@ export const routes: Routes = [
         loadComponent: ()=> import('./shared/main/main.component')
       },
       {
+        path: 'gallery',
+        loadComponent: ()=> import('./pages/gallery/gallery.component')
+      },
+      {
         path: 'auth',
         children: [
           {

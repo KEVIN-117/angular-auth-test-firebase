@@ -1,40 +1,43 @@
-<form class="grid grid-cols-1 gap-5 place-items-center" [formGroup]="formControl" (ngSubmit)="onSubmit($event)">
-  <label for="profile" class="text-lg font-semibold text-gray-700">Upload Image</label>
-  <input name="profile"  id="profile" type="file" (change)="onFileChange($event)"  formControlName="file" accept=".jpg, .jpeg, .png, .webp">
-  <div>
-    <button type="submit"
-
-            class="px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+<section class="flex gap-2">
+  <header class="border-r-4 rounded-xl h-screen  border-indigo-700 w-[10%]">
+    <app-side-nav />
+  </header>
+  <main class="border p-3 rounded-xl  border-indigo-700 w-[10%] flex-1 h-screen overflow-y-scroll">
+    <form class="grid grid-cols-1 gap-5 place-items-center" [formGroup]="formControl" (ngSubmit)="onSubmit($event)">
+      <label for="profile" class="text-lg font-semibold text-gray-700">Upload Image</label>
+      <input name="profile" multiple  id="profile" type="file" (change)="onFileChange($event)" formControlName="file" accept=".jpg, .jpeg, .png, .webp">
+      <div>
+        <button type="submit" class="px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+    @if(previewUrls){
+      <h3>Image Preview:</h3>
+      <div class="w-[80%] mx-auto border border-indigo-700 px-5 py-2 rounded-xl shadow-2xl  flex justify-center items-stretch gap-5 overflow-y-scroll" [ngClass]="{
+    'h-auto': previewUrls.length > 1,
+    'h-[150px]': previewUrls.length === 0
+  }">
+        @for (previewUrl of previewUrls; track $index){
+          <img class="first:pl-5 last:pr-5 shrink-0 rounded-xl overflow-hidden" [src]="previewUrl" alt="Image Preview" style="width: 20%; height: auto;" />
+        }
+      </div>
+    }
+    <button
+      type="submit"
+      (click)="logoutAction()"
+      class="px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
     >
-      Submit
+      Logout
     </button>
-  </div>
-</form>
-@if(previewUrl){
-  <div>
-    <h3>Image Preview:</h3>
-    <img [src]="previewUrl" alt="Image Preview" style="max-width: 100%; height: auto;" />
-  </div>
-}
-<button
-  type="submit"
-  (click)="logoutAction()"
-  class="px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
->
-  Logout
-</button>
 
-<a routerLink="/" class="px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-  Back to Home
-</a>
+    <a routerLink="/" class="px-4 py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+      Back to Home
+    </a>
 
 
-<!--
+  </main>
+</section>
 
 
-@for (image of images; track images.id){
-  <div>
-    <img [src]="image.url" alt="Image" style="max-width: 100%; height: auto;" />
-  </div>
-}
- -->

@@ -1,0 +1,14 @@
+<article class="grid grid-cols-1 gap-5">
+  <header class="flex justify-center items-center">
+    <h1 class="text-sky-600 text-xl font-bold text-center w-fit bg-slate-800 rounded-xl p-3 ">Total Imagenes: {{this.images.length}}</h1>
+  </header>
+
+  <main class="md:w-[95%] w-[99%] mx-auto columns-1 sm:columns-2 md:columns-3 xl:columns-4 2xl:columns-5 gap-4" [ngClass]="{
+    'h-auto': images.length > 1,
+    'h-[150px]': images.length === 0
+  }">
+    @for (image of images; track $index){
+      <app-gallery-item [props]="image" />
+    }
+  </main>
+</article>

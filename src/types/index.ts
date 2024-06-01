@@ -24,6 +24,15 @@ export interface GenericObject<T, R>{
   password: T;
 }
 
+interface DataBaseImages{
+  data: {
+    name: string;
+    url: string;
+  },
+  key: string;
+}
+
 export type FormDto = Form
 export type UserDto = User
+export type DataBaseImagesDto = DataBaseImages
 
