@@ -25,11 +25,11 @@ export default class LogInComponent{
   private _authService = inject(AuthService)
   constructor(private _router: Router) {
     this.formControl = new FormGroup({
-      email: new FormControl('bemiyi7044@crodity.com', [
+      email: new FormControl('', [
         Validators.required,
         Validators.email
       ]),
-      password: new FormControl('n%6R7m4Mp6pTsM', [
+      password: new FormControl('', [
         Validators.required,
         Validators.minLength(8)
       ])
