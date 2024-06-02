@@ -24,13 +24,9 @@ interface FileUpload {
 })
 export default class StorageComponent {
 
-  private _authService = inject(AuthService)
-  private router = inject(Router)
   private _storageService: StorageService = inject(StorageService)
 
   protected formControl;
-
-  protected images: DataBaseImagesDto[] = []
 
   previewUrls: string[] = [];
 

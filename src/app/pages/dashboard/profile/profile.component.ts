@@ -24,8 +24,8 @@ export default class ProfileComponent {
         const data = user
         this.userInstance = new UserSchema(
           user?.email as string,
-          user?.displayName as string,
-          user?.photoURL as string,
+          user?.displayName || 'Anonymous',
+          user?.photoURL || 'https://firebasestorage.googleapis.com/v0/b/auth-example-9a434.appspot.com/o/uploads%2FCiberamenazas%20y%20Tendencias%202019%20»%20Un%20mundo%20complejo.jpg?alt=media&token=695a38fc-f671-4639-8890-a6afbe7a1b97',
           user?.emailVerified as boolean,
           user?.phoneNumber as string,
           user?.providerData[0]?.providerId as string
