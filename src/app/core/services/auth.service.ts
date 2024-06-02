@@ -1,8 +1,17 @@
 import {inject, Injectable} from '@angular/core';
 
-import {Credentials, UserDto} from "../../../types";
-import {Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "@angular/fire/auth";
-import firebase from "firebase/compat";
+import {Credentials} from "../../../types";
+import {
+  Auth,
+  AuthProvider,
+  authState,
+  createUserWithEmailAndPassword,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  UserCredential
+} from "@angular/fire/auth";
 
 
 @Injectable({
@@ -12,14 +21,6 @@ export class AuthService {
   private auth = inject(Auth)
 
   readonly authState = authState(this.auth)
-
-  getAuthStateChanges() {
-
-  }
-
-  session() {
-    return this.authState
-  }
 
   signUp(credential: Credentials) {
     return createUserWithEmailAndPassword(
@@ -39,5 +40,28 @@ export class AuthService {
 
   logOut(){
     return this.auth.signOut()
+  }
+
+  profile(){
+
+  }
+  // providers authentication google and github
+
+  async googleAuth(){
+    const provider = new GoogleAuthProvider()
+    return this.authProvider(provider)
+  }
+
+  githubAuth(){
+    const provider = new GithubAuthProvider()
+    return this.authProvider(provider)
+  }
+
+  async authProvider(provider: AuthProvider): Promise<UserCredential>{
+    try {
+      return await signInWithPopup(this.auth, provider)
+    }catch (e){
+      throw e
+    }
   }
 }

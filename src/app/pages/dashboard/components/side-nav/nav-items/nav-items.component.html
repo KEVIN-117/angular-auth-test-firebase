@@ -1,7 +1,7 @@
-<ul [class]="class">
-  <li><a href="index.php">Home</a></li>
-  <li><a href="about.php">About</a></li>
-  <li><a href="contact.php">Contact</a></li>
-  <li><a href="login.php">Login</a></li>
-  <li><a href="register.php">Register</a></li>
-</ul>
+
+<a [routerLink]="props.path" class="flex md:justify-between justify-center items-center w-full h-full gap-5 py-3 px-5 text-gray-800 dark:text-white hover:text-slate-50" href="/labs/events">
+  <span [innerHtml]="props.icon | htmlTransform"></span>
+  <span class="md:block hidden">
+      {{ props.label}}
+    </span>
+</a>
