@@ -1,7 +1,7 @@
 
 export const environment = {
   firebase : {
-    // tour firebase credentials 
+    // your firebase credentials 
   },
   production: false
 }
